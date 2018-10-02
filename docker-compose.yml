@@ -2,9 +2,10 @@ version: '2'
 services:
   webhook-handler:
     restart: always
-    image: event-reporting-webhook
+    build: .
+    container_name: reporting-webhook
     ports:
-      - 5005:5000
+      - 5018:5018
     volumes:
       - ./logs:/var/log
   elasticsearch:

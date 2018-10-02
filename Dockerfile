@@ -1,19 +1,17 @@
 FROM debian:jessie-slim
-MAINTAINER Aloys Augustin <aloys@scalr.com>
+MAINTAINER Scalr <@scalr.com>
 
 RUN apt-get update && \
-    apt-get install -y nginx supervisor uwsgi python-pip uwsgi-plugin-python && \
-    mkdir -p /var/log/supervisor && \
-    mkdir /run/uwsgi && \
-    (useradd nginx || true) && \
-    (groupadd nginx || true)
+    apt-get install -y --no-install-recommends python python-dev python-pip uwsgi uwsgi-plugin-python && \
+    groupadd uwsgi && \
+    useradd -g uwsgi uwsgi
 
-ADD . /opt/webhook/
+COPY ./requirements.txt /opt/reporting-webhook/
 
-RUN cd /opt/webhook/ && \
-    pip install -r requirements.txt && \
-    cp config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf && \
-    cp config/nginx.conf /etc/nginx/nginx.conf
+RUN pip install -r /opt/reporting-webhook/requirements.txt
 
-EXPOSE 5000
-CMD ["/usr/bin/supervisord"]
+COPY . /opt/reporting-webhook
+
+EXPOSE 5018
+
+CMD ["/usr/bin/uwsgi", "--ini", "/opt/reporting-webhook/uwsgi.ini"] 
