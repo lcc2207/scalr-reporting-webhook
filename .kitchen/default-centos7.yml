@@ -1,0 +1,18 @@
+---
+suuid: eddafb38-3931-42e7-8fef-3d6d3ca1e2fd
+farmId: 814
+roleId: 96624
+imagePlatform: ec2
+imageLocation: us-east-1
+farmRoleId: 1311
+farmLaunched: 1
+serverId: 38c5ad23-514a-46e5-aec6-3084ec29e481
+username: root
+keyfileName: KEY_eddafb38-3931-42e7-8fef-3d6d3ca1e2fd
+scriptOsType: linux
+scriptId: 146
+scriptExecutionId: 41c9161f-a001-4209-8b95-9a1b48f1c720
+hostname: 52.3.254.157
+ssh_key: KEY_eddafb38-3931-42e7-8fef-3d6d3ca1e2fd
+last_action: converge
+last_error: 

@@ -1,0 +1,23 @@
+version: '2'
+services:
+  webhook-handler:
+    restart: always
+    image: event-reporting-webhook
+    ports:
+      - 5005:5000
+    volumes:
+      - ./logs:/var/log
+  elasticsearch:
+    restart: always
+    image: elasticsearch:alpine
+    volumes:
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - 127.0.0.1:9200:9200
+  kibana:
+    restart: always
+    image: kibana:latest
+    ports:
+      - 5601:5601
+    environment:
+     ELASTICSEARCH_URL: http://elasticsearch:9200
