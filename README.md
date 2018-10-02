@@ -1,7 +1,9 @@
 # reporting demo webhook
 
-This webhook to kick off scripts you write
-
+This webhook will bring up the following containers:
+ - reporting-webhook
+ - Elasticsearch
+ - Kibana
 
 # Instance setup.
 Execute "bootstrap.sh" on the target install
