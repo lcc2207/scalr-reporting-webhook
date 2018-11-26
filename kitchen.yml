@@ -23,7 +23,8 @@ provisioner:
   name: shell
 
 verifier:
-  name: inspec
+  name: shell
+  command: python ./test/simulate_webhook_call.py
 
 platforms:
 - name: ubuntu-16.04
