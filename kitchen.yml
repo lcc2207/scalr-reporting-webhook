@@ -24,8 +24,8 @@ provisioner:
 
 verifier:
   name: inspec
-  format: junit
-  output: inspec_output.xml
+  reporter:
+    - junit:./inspec_output.xml
 
 platforms:
 - name: ubuntu-16.04
