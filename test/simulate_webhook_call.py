@@ -2,6 +2,7 @@
 
 import binascii
 import hmac
+import yaml
 
 from hashlib import sha1
 from datetime import datetime
@@ -92,7 +93,8 @@ headers = {
     'X-Signature': sig
 }
 
-
-r = requests.post('http://localhost:5018/reporting/', headers=headers, data=payload)
+info=yaml.load(open('.kitchen/default-ubuntu-1604'))
+host=info['hostname']
+r = requests.post('http://'+ host + ':5018/reporting/', headers=headers, data=payload)
 print r.status_code
 print r.text
