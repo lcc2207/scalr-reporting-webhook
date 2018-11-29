@@ -1,6 +1,6 @@
 # # encoding: utf-8
 
-%w(git unzip docker-ce).each do |pkg|
+%w(docker-ce).each do |pkg|
   describe package(pkg) do
     it { should be_installed }
   end
