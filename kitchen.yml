@@ -22,8 +22,10 @@ driver:
 provisioner:
   name: shell
 
-provisioner:
-  name: shell
+verifier:
+  name: inspec
+  format: junit
+  output: inspec_output.xml
 
 platforms:
 - name: ubuntu-16.04
